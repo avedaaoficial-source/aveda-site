@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suporte de Celular - AVEDA</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #fff; color: #111; }
+    .container { max-width: 1200px; margin: auto; padding: 20px; }
+    .breadcrumb { font-size: 14px; color: #555; margin-bottom: 15px; }
+    .breadcrumb a { text-decoration: none; color: #007185; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .produto { display: flex; flex-wrap: wrap; gap: 30px; }
+    .miniaturas { display: flex; flex-direction: column; gap: 10px; }
+    .miniaturas img { width: 70px; border: 1px solid #ddd; border-radius: 6px; cursor: pointer; }
+    .imagem-principal { flex: 1; text-align: center; }
+    .imagem-principal img { max-width: 400px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .detalhes { flex: 1; min-width: 300px; }
+    .detalhes h1 { font-size: 26px; margin-bottom: 10px; }
+    .avaliacoes { font-size: 14px; color: #007185; margin-bottom: 10px; }
+    .avaliacoes span { color: #f0c14b; font-size: 16px; }
+    .preco { font-size: 24px; color: #B12704; margin: 10px 0; }
+    .parcelamento { font-size: 14px; color: #555; margin-bottom: 10px; }
+    .estoque { font-size: 15px; color: #007600; margin-bottom: 5px; }
+    .entrega { font-size: 14px; margin-bottom: 15px; }
+    .descricao { font-size: 15px; margin-bottom: 20px; line-height: 1.5; }
+    .btn-comprar { display: block; width: 100%; text-align: center; background-color: #ff9900; color: white; padding: 14px 0; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 16px; margin-bottom: 20px; }
+    .btn-comprar:hover { background-color: #e68a00; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
+    table, th, td { border: 1px solid #ddd; }
+    th, td { padding: 10px; text-align: left; font-size: 14px; }
+    th { background-color: #f9f9f9; }
+    .relacionados { margin-top: 40px; }
+    .relacionados h2 { font-size: 20px; margin-bottom: 20px; }
+    .cards { display: flex; gap: 20px; flex-wrap: wrap; }
+    .card { border: 1px solid #ddd; padding: 10px; border-radius: 6px; width: 180px; text-align: center; }
+    .card img { max-width: 100%; border-radius: 6px; }
+    .card h3 { font-size: 14px; margin: 10px 0; }
+    .btn-voltar { display: inline-block; margin: 10px 0; text-decoration: none; color: #007185; font-size: 14px; }
+    .btn-voltar:hover { text-decoration: underline; }
+    @media (max-width: 768px) { .produto { flex-direction: column; align-items: center; } .miniaturas { flex-direction: row; } .imagem-principal img { max-width: 90%; } }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="breadcrumb">
+    <a href="index.html">Início</a> > <a href="index.html#produtos">Eletrônicos</a> > Suportes de Celular
+  </div>
+
+  <a href="index.html#produtos" class="btn-voltar">← Voltar para Produtos</a>
+
+  <div class="produto">
+    <!-- Miniaturas -->
+    <div class="miniaturas">
+      <img src="imagens/fone1.webp" alt="Suporte Miniatura" onclick="trocarImagem(this.src)">
+      <img src="imagens/fone2.png" alt="Suporte Miniatura" onclick="trocarImagem(this.src)">
+    </div>
+
+    <!-- Imagem principal -->
+    <div class="imagem-principal">
+      <img id="imagem-principal" src="imagens/fone2.png" alt="Suporte de Celular">
+    </div>
+
+    <!-- Detalhes -->
+    <div class="detalhes">
+      <h1>Suporte de Celular Ajustável</h1>
+      <div class="avaliacoes">
+        <span>★★★★★</span> (56 avaliações) | <a href="#">Ver avaliações</a>
+      </div>
+      <div class="preco">R$ 64,90</div>
+      <div class="parcelamento">ou 12x de R$ 6,36 sem juros</div>
+      <div class="estoque">Em estoque</div>
+      <div class="entrega">Receba entre <b>14 e 19 de Setembro</b></div>
+      <div class="descricao">
+        ✔️ Ajustável e estável<br>
+        ✔️ Compatível com vários modelos<br>
+        ✔️ Base antiderrapante<br>
+        ✔️ Material de alta durabilidade
+      </div>
+      <a href="#" class="btn-comprar" data-nome="Suporte de Celular Ajustável" data-preco="64.9" data-imagem="imagens/fone2.png">Comprar Agora</a>
+      <table>
+        <tr><th>Marca</th><td>AVEDA</td></tr>
+        <tr><th>Compatibilidade</th><td>Smartphones até 6.8"</td></tr>
+        <tr><th>Material</th><td>ABS + Silicone</td></tr>
+        <tr><th>Ajuste</th><td>Ângulo regulável</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Relacionados -->
+  <div class="relacionados">
+    <h2>Clientes também compraram</h2>
+    <div class="cards">
+      <div class="card">
+        <a href="fone.html"><img src="imagens/suporte2.png" alt="Fone"></a>
+        <h3>Fone de Ouvido Bluetooth</h3>
+        <div class="preco">R$ 64,90</div>
+      </div>
+      <div class="card">
+        <a href="carregador.html"><img src="imagens/carregador2.webp" alt="Carregador"></a>
+        <h3>Carregador USB</h3>
+        <div class="preco">R$ 64,90</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function trocarImagem(src) {
+    document.getElementById("imagem-principal").src = src;
+  }
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>

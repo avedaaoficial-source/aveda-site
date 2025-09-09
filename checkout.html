@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - AVEDA</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #fff; color: #111; }
+    header { background: #fff; border-bottom: 1px solid #ddd; padding: 10px 20px; display: flex; align-items: center; }
+    header img { height: 40px; }
+    .container { max-width: 1200px; margin: auto; padding: 20px; display: flex; gap: 30px; }
+    .col-esquerda { flex: 2; }
+    .col-direita { flex: 1; border: 1px solid #ddd; padding: 20px; border-radius: 6px; background: #fafafa; }
+    h2 { font-size: 20px; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+    .secao { margin-bottom: 20px; }
+    .resumo-item { display: flex; gap: 10px; align-items: center; margin-bottom: 15px; }
+    .resumo-item img { width: 60px; border-radius: 6px; }
+    .resumo-item div { flex: 1; }
+    .preco { font-size: 18px; color: #B12704; }
+    .frete, .total { font-size: 16px; margin-top: 10px; }
+    .total { font-weight: bold; }
+    .btn { display: block; width: 100%; text-align: center; background-color: #ff9900; color: white; padding: 12px 0; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 16px; margin-top: 15px; }
+    .btn:hover { background-color: #e68a00; }
+    .btn-secundario { background-color: #ddd; color: #333; }
+    .btn-secundario:hover { background-color: #bbb; }
+    footer { text-align: center; padding: 20px; background: #f8f8f8; border-top: 1px solid #ddd; margin-top: 40px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="imagens/logo-aveda.jpeg" alt="Logo AVEDA">
+</header>
+
+<div class="container">
+  <!-- Coluna esquerda -->
+  <div class="col-esquerda">
+    <div class="secao">
+      <h2>Endereço de Entrega</h2>
+      <p>João Silva<br>Rua Exemplo, 123<br>São Paulo - SP<br>CEP: 01000-000</p>
+    </div>
+
+    <div class="secao">
+      <h2>Método de Pagamento</h2>
+      <p>Cartão de Crédito final 1234<br>Parcelado em até 12x sem juros</p>
+    </div>
+
+    <div class="secao">
+      <h2>Revisar Itens e Envio</h2>
+      <p>Seu pedido será processado e enviado após a confirmação do pagamento.</p>
+    </div>
+  </div>
+
+  <!-- Coluna direita -->
+  <div class="col-direita">
+    <h2>Resumo do Pedido</h2>
+    <div id="resumo-produto"></div>
+    <div class="frete">Frete: R$ 10,00</div>
+    <div class="total" id="total"></div>
+    <a href="#" class="btn" id="confirmar-pedido">Confirmar Pedido</a>
+    <a href="index.html#produtos" class="btn btn-secundario">Voltar ao Carrinho</a>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 AVEDA - Todos os direitos reservados</p>
+  <p>📱 WhatsApp: (11) 99999-9999 | 📷 Instagram: @avedaoficial | ✉️ contato@aveda.com</p>
+</footer>
+
+<script>
+  // Pega produto do localStorage
+  const produto = JSON.parse(localStorage.getItem("produtoSelecionado"));
+  if (produto) {
+    const resumoDiv = document.getElementById("resumo-produto");
+    resumoDiv.innerHTML = `
+      <div class="resumo-item">
+        <img src="${produto.imagem}" alt="${produto.nome}">
+        <div>
+          <div>${produto.nome}</div>
+          <div class="preco">R$ ${produto.preco.toFixed(2)}</div>
+        </div>
+      </div>
+    `;
+    const total = produto.preco + 10; // Frete fixo R$10
+    document.getElementById("total").textContent = "Total: R$ " + total.toFixed(2);
+  }
+</script>
+
+
+<script>
+  document.getElementById("confirmar-pedido").addEventListener("click", function(e) {
+    e.preventDefault();
+    alert("✅ Pedido confirmado com sucesso! Obrigado por comprar na AVEDA.");
+    localStorage.removeItem("produtoSelecionado");
+    window.location.href = "index.html";
+  });
+</script>
+
+<div id="overlay" class="overlay">
+  <div class="overlay-content">
+    <div class="check-icon">✔️</div>
+    <h2>Pedido confirmado com sucesso!</h2>
+    <p>Obrigado por comprar na AVEDA.</p>
+    <a href="index.html" class="btn">Voltar à Página Inicial</a>
+  </div>
+</div>
+
+<style>
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  .overlay-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    animation: scaleIn 0.3s ease-in-out;
+  }
+  .check-icon {
+    font-size: 50px;
+    color: #ff9900;
+    margin-bottom: 15px;
+  }
+  .overlay h2 { margin: 10px 0; font-size: 22px; color: #333; }
+  .overlay p { font-size: 16px; margin-bottom: 20px; color: #555; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes scaleIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+</style>
+
+<script>
+  document.getElementById("confirmar-pedido").addEventListener("click", function(e) {
+    e.preventDefault();
+    localStorage.removeItem("produtoSelecionado");
+    document.getElementById("overlay").style.display = "flex";
+  });
+</script>
+<script src="script.js"></script>
+</body>
+
+</html>
